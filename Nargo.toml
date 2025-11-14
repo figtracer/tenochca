@@ -4,4 +4,4 @@ members = [
 ]
 
 [benchmark]
-counter = "benchmarks/counter.benchmark.ts"
+tenochca = "benchmarks/tenochca.benchmark.ts"

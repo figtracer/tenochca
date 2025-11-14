@@ -7,7 +7,7 @@ import { AztecAddress } from "@aztec/stdlib/aztec-address";
 import { Contract } from "@aztec/aztec.js/contracts";
 
 /**
- * Deploys the Counter contract.
+ * Deploys The tenochca contract.
  * @param deployer - The wallet to deploy the contract with.
  * @param owner - The address of the owner of the contract.
  * @returns A deployed contract instance.

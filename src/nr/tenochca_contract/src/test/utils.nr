@@ -5,7 +5,7 @@ use aztec::{
 
 pub unconstrained fn setup_contract(
     with_account_contracts: bool,
-) -> (&mut TestEnvironment, AztecAddress, AztecAddress, AztecAddress) {
+) -> (TestEnvironment, AztecAddress, AztecAddress, AztecAddress) {
     // Setup env, generate keys
     let mut env = TestEnvironment::new();
     let (owner, user) = if with_account_contracts {
@@ -20,7 +20,7 @@ pub unconstrained fn setup_contract(
 
     let contract_address = deploy_contract(&mut env, owner);
 
-    (&mut env, contract_address, owner, user)
+    (env, contract_address, owner, user)
 }
 
 pub unconstrained fn deploy_contract(

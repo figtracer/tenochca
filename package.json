@@ -27,7 +27,7 @@
     "@aztec/noir-contracts.js": "2.1.4",
     "@aztec/pxe": "2.1.4",
     "@aztec/stdlib": "2.1.4",
-    "@aztec/test-wallet": "2.1.4",
+    "@aztec/test-wallet": "3.0.0-nightly.20250911",
     "@defi-wonderland/aztec-benchmark": "3.0.0-devnet.2",
     "@types/node": "22.5.1"
   },

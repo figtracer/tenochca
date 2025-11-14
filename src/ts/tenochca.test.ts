@@ -1,8 +1,8 @@
-import { CounterContract } from "../artifacts/Counter.js";
+import { TenochcaContract } from "../artifacts/Tenochca.js";
 import { describe, it, expect, beforeAll, beforeEach } from "vitest";
 import { TestWallet } from "@aztec/test-wallet/server";
 import { createAztecNodeClient } from "@aztec/aztec.js/node";
-import { deployCounter } from "./utils.js";
+import { deployTenochca } from "./utils.js";
 import { AztecAddress } from "@aztec/stdlib/aztec-address";
 
 import {
@@ -11,10 +11,10 @@ import {
   INITIAL_TEST_ENCRYPTION_KEYS,
 } from "@aztec/accounts/testing";
 
-describe("Counter Contract", () => {
+describe("Tenochca Contract", () => {
   let wallet: TestWallet;
   let alice: AztecAddress;
-  let counter: CounterContract;
+  let tenochca: TenochcaContract;
 
   beforeAll(async () => {
     const aztecNode = await createAztecNodeClient("http://localhost:8080", {});
@@ -42,32 +42,6 @@ describe("Counter Contract", () => {
   });
 
   beforeEach(async () => {
-    counter = await deployCounter(wallet, alice);
-  });
-
-  it("e2e", async () => {
-    const owner = await counter.methods.get_owner().simulate({
-      from: alice,
-    });
-    expect(owner).toStrictEqual(alice);
-    // default counter's value is 0
-    expect(
-      await counter.methods.get_counter().simulate({
-        from: alice,
-      }),
-    ).toBe(0n);
-    // call to `increment`
-    await counter.methods
-      .increment()
-      .send({
-        from: alice,
-      })
-      .wait();
-    // now the counter should be incremented.
-    expect(
-      await counter.methods.get_counter().simulate({
-        from: alice,
-      }),
-    ).toBe(1n);
+    tenochca = await deployTenochca(wallet, alice);
   });
 });

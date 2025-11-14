@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "src/nr/counter_contract",
+    "src/nr/tenochca_contract",
 ]
 
 [benchmark]

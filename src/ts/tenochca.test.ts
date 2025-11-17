@@ -10,17 +10,28 @@ import {
   INITIAL_TEST_SECRET_KEYS,
 } from "@aztec/accounts/testing";
 import { deployTenochca } from "./utils.js";
+import { EthCheatCodes } from "@aztec/ethereum/test";
+import { DateProvider } from "@aztec/foundation/timer";
 
 const SANDBOX_URL = "http://localhost:8080";
+const L1_RPC_URL = process.env.L1_RPC_URL || "http://127.0.0.1:8545";
 const DONATION_AMOUNT = 100n;
 const ADDITIONAL_DONATION = 45n;
 const ZERO_AMOUNT = 0n;
 const TEST_TIMEOUT = 120_000;
+const REGISTERED_ARTIST_DELAY_SECONDS = 300; // seconds
+
+async function advanceTime(seconds: number): Promise<void> {
+  const cheatCodes = new EthCheatCodes([L1_RPC_URL], new DateProvider());
+  const currentTimestamp = await cheatCodes.timestamp();
+  await cheatCodes.warp(currentTimestamp + seconds);
+}
 
 describe(
   "Tenochca Contract",
   () => {
     let wallet: TestWallet;
+    let aztecNode: Awaited<ReturnType<typeof createAztecNodeClient>>;
     let ownerAddress: AztecAddress;
     let primaryArtist: AztecAddress;
     let donor: AztecAddress;
@@ -44,7 +55,7 @@ describe(
       tenochca.methods.is_registered(artist).simulate({ from: donor });
 
     beforeAll(async () => {
-      const aztecNode = await createAztecNodeClient(SANDBOX_URL, {});
+      aztecNode = await createAztecNodeClient(SANDBOX_URL, {});
       wallet = await TestWallet.create(
         aztecNode,
         {
@@ -91,6 +102,8 @@ describe(
         const registrationReceipt = await registerArtist(primaryArtist);
         expect(registrationReceipt.status).toBe(TxStatus.SUCCESS);
 
+        await advanceTime(REGISTERED_ARTIST_DELAY_SECONDS);
+
         const donationReceipt = await donate(primaryArtist, DONATION_AMOUNT);
         expect(donationReceipt.status).toBe(TxStatus.SUCCESS);
 
@@ -103,6 +116,9 @@ describe(
       "rejects duplicate artist registrations",
       async () => {
         await registerArtist(primaryArtist);
+
+        await advanceTime(REGISTERED_ARTIST_DELAY_SECONDS);
+
         await expect(registerArtist(primaryArtist)).rejects.toThrowError();
 
         const registrationStatus = await isRegistered(primaryArtist);
@@ -129,6 +145,9 @@ describe(
       "accumulates multiple donations for the same artist",
       async () => {
         await registerArtist(primaryArtist);
+        // Advance time to allow delayed value change to take effect
+        await advanceTime(REGISTERED_ARTIST_DELAY_SECONDS);
+
         await donate(primaryArtist, DONATION_AMOUNT);
         await donate(primaryArtist, ADDITIONAL_DONATION);
 
@@ -142,6 +161,9 @@ describe(
       "rejects zero-value donations",
       async () => {
         await registerArtist(primaryArtist);
+
+        await advanceTime(REGISTERED_ARTIST_DELAY_SECONDS);
+
         await expect(donate(primaryArtist, ZERO_AMOUNT)).rejects.toThrowError();
 
         const total = await readTotal(primaryArtist);
@@ -157,6 +179,8 @@ describe(
         expect(before).toBe(false);
 
         await registerArtist(primaryArtist);
+
+        await advanceTime(REGISTERED_ARTIST_DELAY_SECONDS);
 
         const after = await isRegistered(primaryArtist);
         expect(after).toBe(true);

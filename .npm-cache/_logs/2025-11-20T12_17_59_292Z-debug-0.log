@@ -1,0 +1,18 @@
+0 verbose cli /opt/homebrew/Cellar/node/25.2.0/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.6.2
+2 info using node@v25.2.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/frontend/.npmrc
+5 silly config load:file:/Users/gustavo/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm run build --no-lint
+8 verbose argv "run" "build" "--" "--no-lint"
+9 verbose logfile logs-max:10 dir:/Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/.npm-cache/_logs/2025-11-20T12_17_59_292Z-
+10 verbose logfile /Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/.npm-cache/_logs/2025-11-20T12_17_59_292Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd /Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/frontend
+13 verbose os Darwin 25.1.0
+14 verbose node v25.2.0
+15 verbose npm  v11.6.2
+16 verbose exit 1
+17 verbose code 1

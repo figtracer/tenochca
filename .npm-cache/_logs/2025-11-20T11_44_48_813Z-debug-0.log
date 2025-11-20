@@ -1,0 +1,36 @@
+0 verbose cli /opt/homebrew/Cellar/node/25.2.0/bin/node /opt/homebrew/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@11.6.2
+2 info using node@v25.2.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/.npmrc
+5 silly config load:file:/Users/gustavo/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm exec create-next-app@latest frontend --ts --tailwind --eslint --app --src-dir --import-alias @/* --use-npm
+8 verbose argv "exec" "--yes" "--" "create-next-app@latest" "frontend" "--ts" "--tailwind" "--eslint" "--app" "--src-dir" "--import-alias" "@/*" "--use-npm"
+9 verbose logfile logs-max:10 dir:/Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/.npm-cache/_logs/2025-11-20T11_44_48_813Z-
+10 verbose logfile /Users/gustavo/Projects/web3/personal/aztec/personal/tenochca/.npm-cache/_logs/2025-11-20T11_44_48_813Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+13 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+14 http fetch GET 200 https://registry.npmjs.org/create-next-app 282ms (cache miss)
+15 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+16 silly packumentCache heap:2348810240 maxSize:587202560 maxEntrySize:293601280
+17 silly idealTree buildDeps
+18 silly fetch manifest create-next-app@16.0.3
+19 silly packumentCache full:https://registry.npmjs.org/create-next-app cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/create-next-app 196ms (cache miss)
+21 silly packumentCache full:https://registry.npmjs.org/create-next-app set size:undefined disposed:false
+22 silly placeDep ROOT create-next-app@16.0.3 OK for:  want: 16.0.3
+23 silly reify moves {}
+24 silly audit bulk request { 'create-next-app': [ '16.0.3' ] }
+25 http cache create-next-app@https://registry.npmjs.org/create-next-app/-/create-next-app-16.0.3.tgz 0ms (cache hit)
+26 silly tarball no local data for create-next-app@https://registry.npmjs.org/create-next-app/-/create-next-app-16.0.3.tgz. Extracting by manifest.
+27 http fetch GET 200 https://registry.npmjs.org/create-next-app/-/create-next-app-16.0.3.tgz 114ms (cache miss)
+28 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 214ms
+29 silly audit report {}
+30 verbose cwd /Users/gustavo/Projects/web3/personal/aztec/personal/tenochca
+31 verbose os Darwin 25.1.0
+32 verbose node v25.2.0
+33 verbose npm  v11.6.2
+34 verbose exit 0
+35 info ok

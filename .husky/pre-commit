@@ -1,2 +1,12 @@
-aztec-nargo fmt
-yarn lint-staged
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Format Noir code if contracts exist
+if [ -d "contracts/src/nr" ]; then
+  cd contracts && aztec-nargo fmt && cd ..
+fi
+
+# Run lint-staged if it exists
+if command -v npx >/dev/null 2>&1; then
+  npx lint-staged
+fi

@@ -1,4 +1,4 @@
-## Tenochca Workspace
+# Tenochca
 
 This repository now holds two separate projects:
 
@@ -30,5 +30,3 @@ npm run dev
 
 The frontend reads the artifact from `contracts/src/artifacts/Tenochca.ts`, so
 make sure the contract has been compiled before starting the UI.
-
-# Tenochca

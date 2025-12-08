@@ -34,7 +34,7 @@
     "@aztec/test-wallet": "3.0.0-devnet.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "20.1.0",
+    "@commitlint/cli": "20.2.0",
     "@commitlint/config-conventional": "20.0.0",
     "@types/jest": "30.0.0",
     "@types/mocha": "10.0.6",
